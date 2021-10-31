@@ -1,0 +1,1 @@
+import '../src/index.css'; //👈 The app's CSS file goes here
