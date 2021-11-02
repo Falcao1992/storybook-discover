@@ -7,7 +7,7 @@
         :disabled="true"
         name="checked"
       />
-      <span class="checkbox-custom" @click="$emit('archiveTask', task.id)" />
+      <span class="checkbox-custom" @click="archiveTask(task.id)" />
     </label>
     <div class="title">
       <input
@@ -17,15 +17,21 @@
         placeholder="Input title"
       />
     </div>
-    <div class="actions">
-      <a @click="$emit('pinTask', task.id)" v-if="!isChecked">
-        <span class="icon-star" />
-      </a>
+    <div class="block-actions">
+      <div class="actions">
+        <a @click="pinTask(task.id)" v-if="!isChecked">
+          <span class="icon-star" />
+        </a>
+      </div>
+      <div class="actions">
+        <button @click="removeTask(task.id)" class="action_cross">X</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "task",
   props: {
@@ -39,6 +45,17 @@ export default {
       }),
     },
   },
+  methods: {
+    pinTask(id) {
+      this.$emit("pinTask", id);
+    },
+    archiveTask(id) {
+      this.$emit("archiveTask", id);
+    },
+    removeTask(id) {
+      this.$emit("removeTask", id);
+    },
+  },
   computed: {
     taskClass() {
       return `list-item ${this.task.state}`;
@@ -49,3 +66,16 @@ export default {
   },
 };
 </script>
+
+<style>
+.block-actions {
+  display: flex;
+  align-items: center;
+}
+.action_cross {
+  color: red;
+  font-weight: 600;
+  background-color: transparent;
+  font-size: 18px;
+}
+</style>

@@ -1,0 +1,24 @@
+.search_container {
+    background-color: #332f56;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.search_block_label {
+    margin-right: 10px;
+}
+
+.search_button {
+    border-radius: 8px;
+    background-color: #b4adedcf;
+    color: aliceblue;
+    padding: 5px;
+}
+
+.search_container input {
+    border: 1px solid #b4adedcf;
+    border-radius: 8px;
+    padding: 5px;
+}

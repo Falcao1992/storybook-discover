@@ -244,7 +244,7 @@ body {
     font-style: 400;
     color: #333;
     font-size: 16px;
-    background-color: #26c6da;
+    background-color: #d3edf4;
 }
 h1,
 h2,
@@ -860,8 +860,9 @@ a:focus {
     flex-wrap: wrap;
     height: 3rem;
     width: 100%;
-    background: white;
-    transition: all ease-out 150ms;
+    background: #332f56;
+    transition: all ease-out .7s;
+    opacity: 1;
 }
 .list-item .title {
     overflow: hidden;
@@ -871,6 +872,7 @@ a:focus {
 }
 .list-item input[type="text"] {
     background: transparent;
+    color: #d3edf4;
     width: 100%;
 }
 .list-item input[type="text"]:focus {
@@ -905,13 +907,13 @@ a:focus {
     color: #aaa;
 }
 .list-item:hover {
-    background-image: linear-gradient(to bottom, #e5f9f7 0%, #f0fffd 100%);
+    opacity: .7;
 }
 .list-item:hover .checkbox {
     cursor: pointer;
 }
 .list-item + .list-item {
-    border-top: 1px solid #f0f9fb;
+    border-top: 1px solid #8b85c1;
 }
 .list-item.checked input[type="text"] {
     color: #ccc;
@@ -948,7 +950,7 @@ a:focus {
 .list-items {
     position: relative;
     background: white;
-    min-height: 288px;
+    min-height: 25vh;
 }
 .list-items .select-placeholder {
     border: none;
@@ -985,8 +987,11 @@ a:focus {
     color: #666;
 }
 .page.lists-show {
-    min-height: 100vh;
-    background: white;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: #b4adedcf;
+    padding: 10px;
 }
 .page.lists-show nav {
     background: #d3edf4;
@@ -1004,6 +1009,8 @@ a:focus {
     line-height: 2rem;
     cursor: pointer;
     white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
 }
 .page.lists-show nav .title-page .title-wrapper {
     overflow: hidden;

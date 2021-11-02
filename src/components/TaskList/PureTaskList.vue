@@ -18,10 +18,11 @@
     <div class="list-items" v-if="showTasks">
       <task
         v-for="(task, index) in tasksInOrder"
+        @removeTask="removeTask"
+        @archiveTask="archiveTask"
+        @pinTask="pinTask"
         :key="index"
         :task="task"
-        @archiveTask="$emit('archiveTask', $event)"
-        @pinTask="$emit('pinTask', $event)"
       />
     </div>
   </div>
@@ -29,6 +30,7 @@
 
 <script>
 import Task from "../Task/Task";
+import store from "../../store";
 export default {
   name: "task-list",
   props: {
@@ -40,9 +42,28 @@ export default {
       type: Array,
       default: () => [],
     },
+    type: {
+      type: String,
+      default: "default",
+    },
   },
   components: {
     Task,
+  },
+  methods: {
+    removeTask(id) {
+      if (this.type === "default") {
+        store.commit("REMOVE_TASK", id);
+      } else {
+        store.commit("UNARCHIVED_TASK", id);
+      }
+    },
+    archiveTask(id) {
+      store.commit("ARCHIVE_TASK", id);
+    },
+    pinTask(id) {
+      store.commit("PIN_TASK", id);
+    },
   },
   computed: {
     noTasks() {
